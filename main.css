@@ -1,0 +1,133 @@
+@font-face {
+    font-family: "SmallBoldPixel";
+    src: url("./font/small_bold_pixel-7.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "MiniPixel";
+    src: url("./font/mini_pixel-7.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* #E5AE1E 
+   #D1382B
+   #F5EBC5
+   #1A1A1A
+*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #1A1A1A;
+}
+
+#heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em 0em;
+}
+
+#heading .text-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#heading h1 {
+    font-size: 10em;
+    color: #E5AE1E;
+    font-family: "SmallBoldPixel", Arial, sans-serif;
+    animation: pulse 3s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 0.5;
+    }
+    80% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#heading p {
+    font-size: 2em;
+    color: rgba(197, 121, 22, 0.455);
+    font-family: "MiniPixel", Arial, sans-serif;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation:
+    typing 2s 3s steps(33, end) forwards,
+    blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 33ch; }
+}
+
+#interaction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#chosen-choice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+.choice-box {
+    width: 200px;
+    height: 200px;
+    border: 5px solid #E5AE1E;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #1A1A1A;
+}
+
+#human-choose-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    padding: 2em 0em;
+}
+
+.choice-button {
+    border: none;
+    background-color: #1A1A1A;
+}
+
+.choice-button img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
