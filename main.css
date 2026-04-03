@@ -47,7 +47,7 @@ body {
 
 #heading h1 {
     font-size: 10em;
-    color: #E5AE1E;
+    color: #D1382B;
     font-family: "SmallBoldPixel", Arial, sans-serif;
     animation: pulse 3s ease-in-out;
 }
@@ -59,6 +59,7 @@ body {
     }
     50% {
         opacity: 0.5;
+        color: #F5EBC5;
     }
     80% {
         opacity: 0.8;
@@ -72,7 +73,7 @@ body {
 
 #heading p {
     font-size: 2em;
-    color: rgba(197, 121, 22, 0.455);
+    color: #E5AE1E;
     font-family: "MiniPixel", Arial, sans-serif;
     display: inline-block;
     overflow: hidden;
@@ -81,6 +82,7 @@ body {
     animation:
     typing 2s 3s steps(33, end) forwards,
     blink 0.7s step-end infinite;
+    padding: 0em 0em 0em 0em;
 }
 
 @keyframes typing {
@@ -93,6 +95,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    animation: fadeIn 5s forwards;
 }
 
 #chosen-choice {
@@ -100,16 +103,85 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 2em;
+    gap: 5em;
 }
 
 .choice-box {
-    width: 200px;
+    width: 300px;
     height: 200px;
-    border: 5px solid #E5AE1E;
-    border-radius: 10px;
     overflow: hidden;
-    background-color: #1A1A1A;
+    background-color: transparent;  
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#computer-choice {
+    border-bottom: 5px ridge #D1382B;
+}
+
+#human-choice {
+    border-bottom: 5px ridge #E5AE1E;
+}
+
+.choice-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Animation when the choice image changes */
+.choice-img-animate {
+    animation: choice-pop 0.3s ease-out;
+}
+
+@keyframes choice-pop {
+    0% {
+        transform: scale(0.8);
+        filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    }
+    50% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 16px rgba(255, 242, 121, 0.9));
+    }
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+    }
+}
+
+#human-choice img {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.9);
+    translate: 0 25px;
+    transform-origin: center center;
+    object-fit: contain;
+}
+
+#chosen-choice span {
+    font-family: "MiniPixel", Arial, sans-serif;
+    font-size: 2em;
+    color: #D1382B;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.614);
+}
+
+#result {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5em;
+    padding: 1em 0em;
+    font-family: "MiniPixel", Arial, sans-serif;
+    font-size: 2em;
+    color: #F5EBC5;
 }
 
 #human-choose-box {
@@ -117,17 +189,111 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 2em;
-    padding: 2em 0em;
+    gap: 10em;
+    padding: 0 0em;
 }
 
 .choice-button {
     border: none;
     background-color: #1A1A1A;
+    transition: transform 0.3s ease-in-out;
 }
 
 .choice-button img {
     width: 150px;
     height: 150px;
     object-fit: cover;
+    transition: filter 0.3s ease-in-out;
+
+}
+
+#human-choose-box button:hover {
+    transform: scale(1.1);
+}
+
+.choice-button:hover img {
+    filter: drop-shadow(0 0 10px rgba(255, 242, 121, 0.5));
+}
+
+.choice-button:focus img {
+    transform: scale(1.3);
+    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.619));
+    transition: transform 0.1s ease-in-out;
+}
+
+#game-over {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: "MiniPixel", Arial, sans-serif;
+    color: #E5AE1E;
+    animation: pulse 0.5s ease-in-out;
+}
+
+#game-over h2 {
+    font-size: 15em;
+    color: #E5AE1E;
+    text-shadow: 0 0 20px rgba(255, 242, 121, 0.5);
+    animation: win-pulse 3s infinite;
+}
+
+#game-over p {
+    font-size: 3em;
+    color: #F5EBC5;
+}
+
+@keyframes win-pulse {
+    0% {
+        text-shadow: 0 0 20px rgba(255, 242, 121, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 242, 121, 0.763);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 242, 121, 0.5);
+    }
+}
+
+@keyframes lose-pulse {
+    0% {
+        text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 0, 0, 0.763);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    }
+}
+
+@keyframes tie-pulse {
+    0% {
+        text-shadow: 0 0 20px rgba(255, 242, 121, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 242, 121, 0.763);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(255, 242, 121, 0.5);
+    }
+}
+
+#game-over button{ 
+    font-size: 2em;
+    color: #D1382B;
+    background-color: #E5AE1E;
+    border: 5px ridge #F5EBC5;
+    padding: 0.1em 0.5em;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "MiniPixel", Arial, sans-serif;
+    font-size: 4em;
+    transition: transform 0.3s ease-in-out;
+    margin-top: 1em;
+}
+
+#game-over button:hover {
+    transform: scale(1.1);
 }
